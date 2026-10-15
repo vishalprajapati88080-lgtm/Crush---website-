@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise ❤️</title>
+<style>
+* { box-sizing: border-box; }
 
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  font-family: Georgia, serif;
+  color: white;
+  background: radial-gradient(circle, #450015, #080008 75%);
+}
+
+.card {
+  width: 90%;
+  max-width: 390px;
+  padding: 28px 20px;
+  border: 1px solid #b00038;
+  border-radius: 24px;
+  background: #17000de8;
+  box-shadow: 0 0 30px #ff174f55;
+  z-index: 2;
+}
+
+.heart {
+  font-size: 65px;
+  animation: beat 1s infinite;
+  filter: drop-shadow(0 0 15px red);
+}
+
+h1 {
+  color: #ff476f;
+  text-shadow: 0 0 15px red;
+}
+
+p { line-height: 1.8; color: #ffe0e8; }
+
+button {
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 30px;
+  background: #e60045;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#surprise { display: none; }
+
+.floating {
+  position: fixed;
+  bottom: -30px;
+  color: #ff174f;
+  animation: rise 6s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.18); }
+}
+
+@keyframes rise {
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">❤️</div>
+  <h1>Hey, Beautiful!</h1>
+  <p>Some people make ordinary moments feel special. ✨</p>
+  <p>And honestly, you are one of those people. 😊❤️</p>
+
+  <button onclick="showSurprise()">Open Your Surprise 💌</button>
+
+  <div id="surprise">
+    <h2>🌹 A Little Secret 🌹</h2>
+    <p>Your smile can make an ordinary day brighter. ❤️</p>
+    <h3>Would you like to get to know me better? 💖</h3>
+    <p>No pressure — just an honest feeling. 🌷</p>
+  </div>
+</div>
+
+<script>
+function showSurprise() {
+  document.getElementById("surprise").style.display = "block";
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "floating";
+  heart.textContent = Math.random() > 0.5 ? "❤️" : "♥️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (16 + Math.random() * 24) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+</body>
+</html>
